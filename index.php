@@ -1,11 +1,8 @@
 <?php
-
 require 'includes/login.inc.php';
 ?>
-
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <title>Login</title>
