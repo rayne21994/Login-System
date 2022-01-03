@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     
 }
 
-if (isset($_POST['login-submit'])){
+if (isset($_POST['submit'])){
     if (empty($username) || empty($password)){
         header ("Location: ../index.php?error=emptyfields");
         exit();
