@@ -1,0 +1,50 @@
+html, body{
+
+ height:100%;
+  width:100%;
+  margin:0;
+}
+body {
+  display:flex;
+}
+
+.login {
+     text-align: center;
+     margin: auto;
+}
+.login-form{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 50px 50px 50px 50px;
+    
+}
+
+.user-name {
+    padding-bottom: 10px;
+    
+}
+.password{
+    padding-bottom: 30px;
+    
+}
+::-webkit-input-placeholder {
+   text-align: center;
+}
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+:-ms-input-placeholder {  
+   text-align: center; 
+}
+input, select, textarea {
+  width: 150px;
+    -ms-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    -webkit-box-sizing:content-box;
+}
+
+
