@@ -36,7 +36,7 @@ if (isset($_POST['login-submit'])){
             header("Location: ../index.php?error=sqlerror");
             exit();
             }
-        ##########################################
+        ################ NOT GETTING INTO THIS LINE ##########################
         else{
             mysqli_stmt_bind_param($stmt, "ss", $username, $username);
             mysqli_stmt_execute($stmt);
