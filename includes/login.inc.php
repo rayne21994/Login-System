@@ -24,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     
 }
 
-if (isset($_POST['login-submit'])){
+if (isset($_POST['submit'])){
     if (empty($username) || empty($password)){
         header ("Location: ../index.php?error=emptyfields");
         exit();
     }
     else {
-        $sql_check= "SELECT * FROM test_table WHERE username=?;";
+        $sql_check= "SELECT * FROM test_table WHERE username=? ";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql_check)){
             header("Location: ../index.php?error=sqlerror");

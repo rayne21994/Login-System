@@ -26,7 +26,7 @@ require 'includes/login.inc.php';
                 <input type="password" name="pwd" placeholder="Password">
             </div>
             <div class="submit">
-               <button type="submit" name="login-submit">Login</button>
+               <button type="submit">Login</button>
                  <!-- <input type="submit" value="Login">-->
             </div>
 
