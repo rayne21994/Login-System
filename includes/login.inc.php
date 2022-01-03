@@ -30,7 +30,7 @@ if (isset($_POST['login-submit'])){
         exit();
     }
     else {
-        $sql_check= "SELECT * FROM test_table WHERE username=?;";
+        $sql_check= "SELECT * FROM test_table WHERE username=? ";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql_check)){
             header("Location: ../index.php?error=sqlerror");
