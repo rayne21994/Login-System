@@ -4,27 +4,12 @@ require 'dbh.inc.php'; #database
 if ($_SERVER['REQUEST_METHOD']=='POST'){
     $username = $_POST['userid'];
     $password = $_POST['pwd'];
-    
-    $sql = "SELECT * FROM test_table WHERE username='".$username."' AND password='".$password."';";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result);
-    
-
-    if ($row['usertype']=='admin'){
-        echo "admin";
+    if ( !isset($_POST['userid'], $_POST['pwd']) ) {
+        exit('Please fill both the username and password fields!');
     }
-    
-    elseif ($row['usertype']=='web developer'){
-        echo "web developer";
-    }
-    
-     elseif ($row['usertype']=='salesman'){
-        echo "salesman";
-    }
-    
 }
 
-if (isset($_POST['submit'])){
+if (isset($_POST['submit']) && !empty($_POST['submit'])){
     if (empty($username) || empty($password)){
         header ("Location: ../index.php?error=emptyfields");
         exit();
@@ -32,40 +17,50 @@ if (isset($_POST['submit'])){
     else {
         $sql_check= "SELECT * FROM test_table WHERE username=? ";
         $stmt = mysqli_stmt_init($conn);
+       
         if (!mysqli_stmt_prepare($stmt, $sql_check)){
             header("Location: ../index.php?error=sqlerror");
             exit();
             }
         ################ NOT GETTING INTO THIS LINE ##########################
         else{
-            mysqli_stmt_bind_param($stmt, "ss", $username, $username);
+            mysqli_stmt_bind_param($stmt, "s", $username);
             mysqli_stmt_execute($stmt);
             $result_stmt = mysqli_stmt_get_result($stmt);
-            if($row = mysqli_fetch_array($result_stmt)){
-               $pwdCheck = password_verify($password, $result_stmt['password']);
-                if($pwdCheck == false){
+            $row = mysqli_fetch_array($result_stmt);
+            if($row){
+               # This will only work if we use hashed passwords
+                $pwdCheck = password_verify($password, $row['password']);
+                if (!$pwdCheck) {
                     header("Location: ../index.php?error=wrongpwd");
-                    }
-                
-                
-                 else if($pwdCheck == true){
-                    session_start();
-                    $_SESSION['userid'] = $row['username'];                    
-                    header("Location: ../login.php?login=success");
-                    exit();
-                    }
                 }
-            
-     else {
-            header ("Location: ../index.php?error=nouser");
-            exit ();
+                else {
+                    session_regenerate_id();
+                    $_SESSION['loggedin'] = TRUE;
+                    $_SESSION['name'] = $row['username'];  
+                    $_SESSION['id'] = $row['id'];
+                    header(checkRole($row['usertype']));
+                }
+            }
+            else {
+                header ("Location: ../index.php?error=nouser");
+                exit ();
             }
             
-            
-            }
-        ###################################################
         }
+        ###################################################
     }
+} else {
+    exit('Something went wrong');
+}
 
+function checkRole($role) {
+    $usertype = array(
+        'admin' => 'Location: ../home.php',
+        'web developer' =>  'Location: ../home2.php',
+        'salesman' =>  'Location: ../home3.php',
+    );
+    return $usertype[$role];
+}
 
 ?>
