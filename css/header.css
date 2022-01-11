@@ -1,0 +1,111 @@
+body {
+    margin: 0px;
+
+}
+.section{
+    background-color: red;
+      width: 300px;
+  overflow: hidden;
+    
+}
+.iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+
+}
+.div-section{
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+width: 80%;
+height: 75%;
+margin: auto;
+background-color: #c2fdb9;
+}
+
+header.topbar {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+    background-color: beige;
+}
+
+.logo {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+nav.navigation {
+    position: relative;
+    display: block;
+    float: left;
+}
+
+nav.user {
+    position: relative;
+    display: block;
+    float: right;
+}
+
+nav ul {
+    position: relative;
+    display: block;
+    float: left;
+    list-style: none;
+
+}
+
+nav ul li {
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+li a {
+    color: black;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+}
+
+.fa-3x {
+   
+}
+.dropdown-toggle::after{
+    margin-left: .5em !important;
+    
+}
+
+.question1{
+    display: block;
+} 
+.question2{
+    display: none;
+} 
+.question3{
+    display: none;
+} 
+.end{
+    display: none;
+}

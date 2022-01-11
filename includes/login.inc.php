@@ -4,7 +4,7 @@ require 'dbh.inc.php'; #database
 if ($_SERVER['REQUEST_METHOD']=='POST'){
     $username = $_POST['userid'];
     $password = $_POST['pwd'];
-    if ( !isset($_POST['userid'], $_POST['pwd']) ) {
+    if (!isset($_POST['userid'], $_POST['pwd']) ) {
         exit('Please fill both the username and password fields!');
     }
 }
